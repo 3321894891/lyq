@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="个人网站样式.css" />
+    <title>
+        My Photography
+    </title>
+
+
+
+</head>
+
+<body>
+    <div class="subtitle">
+        <div>
+            Photography
+        </div>
+    </div>
+    <div class="colection">
+        <div class="toggle-container">
+            <input type="checkbox" id="人像">
+            <label for="人像" class="colection-title">人像</label>
+
+            <div class="content">
+                <div class="grid-table">
+                    <div class="cell"><img class="heng" src="DSC_0880.JPG"></div>
+                    <div class="cell"><img class="heng" src="DSC_0995.JPG" alt="图片"></div>
+                    <div class="cell"><img class="heng" src="DSC_1223.JPG" alt="图片"></div>
+                    <div class="cell"><img class="heng" src="DSC_0993.JPG" alt="图片"></div>
+                    <div class="cell"><img class="heng" src="DSC_1196.jpg" alt="图片"></div>
+                    <div class="cell"><img class="heng" src="DSC_1409.jpg" alt="图片"></div>
+                    <div class="cell"><img class="heng" src="DSC_1240.jpg" alt="图片"></div>
+                    <div class="cell"><img class="heng" src="DSC_1422（副本）JPG.JPG" alt="图片"></div>
+                    <div class="cell"><img class="heng" src="f5926272.jpg" alt="图片"></div>
+                    <div class="cell"><img class="heng" src="DSC_0404.JPG" alt="图片"></div>
+                </div>
+            </div>
+        </div>
+        <div class="toggle-container">
+            <input type="checkbox" id="人文照片">
+            <label for="人文照片" class="colection-title">人文</label>
+            <div class="content">
+                <div class="grid-table">
+                    <div class="cell"><img class="heng" src="f6457216.jpg" alt="图片"></div>
+                    <div class="cell"><img class="heng" src="f5073920.jpg" alt="图片"></div>
+                </div>
+            </div>
+        </div>
+        <div class="toggle-container">
+            <input type="checkbox" id="静物">
+            <label for="静物" class="colection-title">静物</label>
+            <div class="content">
+                这是隐藏的内容。
+            </div>
+        </div>
+        <div></div>
+        <div class="overlay">
+            <img src="" alt="大图" class="large-img">
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 获取所有小图
+            const smallImages = document.querySelectorAll('.cell img');
+            // 获取遮罩层和大图
+            const overlay = document.querySelector('.overlay');
+            const largeImage = document.querySelector('.large-img');
+
+            // 点击小图时显示大图
+            smallImages.forEach(img => {
+                img.addEventListener('click', function () {
+                    largeImage.src = this.src; // 设置大图的 src
+                    overlay.style.display = 'flex'; // 显示遮罩层
+                });
+            });
+
+            // 点击遮罩层时关闭大图
+            overlay.addEventListener('click', function () {
+                overlay.style.display = 'none'; // 隐藏遮罩层
+            });
+        });
+    </script>
+</body>
+
+</html>
