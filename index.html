@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="个人网站样式.css" />
+    <title>
+        HI~很高兴见到你！
+    </title>
+
+
+</head>
+
+<body>
+    <div class="nav-dots">
+        <div class="dot active" data-page="0"></div>
+        <div class="dot" data-page="1"></div>
+        <div class="dot" data-page="2"></div>
+        <div class="dot" data-page="3"></div>
+    </div>
+
+    <section id="avatar-page" class="page">
+        <div>
+            <div class="AboutMe">
+                <div class="chinese">
+                    关于我
+                </div>
+                <div class="english">
+                    About Me
+                </div>
+            </div>
+        </div>
+        <div class="profile-container">
+            <div class="avatar">
+                <img src="头像.jpg" alt="用户头像">
+            </div>
+            <div class="divider"></div>
+            <div class="info">
+                <h1 class="name">刘雨晴</h1>
+                <div class="detail">
+                    <p>
+                        <a class="tohsd" href="https://www.hunnu.edu.cn/" target="_blank">湖南师范大学</a>大二在读生
+                    </p>
+                    <p>网络与新媒体专业</p>
+                    <p>能敲代码、会写游戏，摄影后期一条龙</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="page">
+        <div class="workstitle">
+            <h1>作品展示</h1>
+        </div>
+        <div class="workscontent">
+            <div id="photo" class="work">
+                <p>
+                    <a href="摄影作品.html" target="_blank">
+                        <img src="摄影.png" alt="点击跳转" height=360px width=280px>
+                    </a>
+                </p>
+
+            </div>
+            <div class="divider1"></div>
+            <div class="work">
+                <p>游戏开发</p>
+            </div>
+            <div class="divider1"></div>
+            <div id="media" class="work">
+                <a href="新媒体运营.html" target="_blank">
+                    <img src="新媒体运营.png" alt="点击跳转" height=360px width=280px>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="awards" class="page">
+        <div class="workstitle">
+            <h1>获奖记录</h1>
+        </div>
+        <div class="awards-and-times">
+
+            <div class="time">2023</div>
+            <div class="award"><a href="https://www.hunnu.edu.cn/">湖南师范大学蓝田传媒节“青相绘”海报比赛三等奖</a></div>
+            <div class="time">2024</div>
+            <div class="award">全国大学生网络编辑大赛优秀奖</div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="page">
+        <div class="workstitle">
+            <h1>联系我</h1>
+        </div>
+
+        <div class="copyable-element">
+            <div>
+                邮箱：
+            </div>
+            <div class="number">
+                3321894891@qq.com
+            </div>
+            <div>
+                电话/微信
+            </div>
+            <div class="number">
+                19375297207
+            </div>
+        </div>
+    </section>
+    <script>
+        // 可选：导航点点击交互
+        document.querySelectorAll('.dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = dot.dataset.page;
+                document.querySelectorAll('section')[index].scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 可选：滚动时更新导航点状态
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const dots = document.querySelectorAll('.dot');
+
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+                    dots.forEach(d => d.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const copyableElements = document.querySelectorAll('.number');
+
+            copyableElements.forEach(element => {
+                element.addEventListener('click', function (event) {
+                    const target = event.target.closest('.number');
+                    if (target) {
+                        const text = target.textContent.trim();
+                        navigator.clipboard.writeText(text)
+                            .then(() => {
+                                alert('已复制到剪贴板: ' + text);
+                            })
+                            .catch(err => {
+                                console.error('复制失败: ', err);
+                            });
+                    }
+                });
+            });
+        });</script>
+</body>
+
+</html>

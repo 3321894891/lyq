@@ -1,0 +1,706 @@
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    /* 关键属性 */
+    overflow-y: scroll;
+    /* 必须设置滚动容器 */
+    height: 100vh;
+}
+
+.nav-dots {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    margin: 1rem 0;
+    background: rgba(63, 80, 73, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot.active {
+    background: #3F5049;
+    transform: scale(1.3);
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(to right, #BDCDC3 0%, #C1C6B0 100%);
+    background-size: 100%, 100%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    /* 新增 */
+    flex-direction: column;
+    /* 新增 */
+    /*min-height: 100vh;
+     新增 */
+
+}
+
+.page {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    scroll-snap-align: start;
+}
+
+.AboutMe {
+    justify-content: center;
+    text-align: center;
+    margin-top: 1.5cm;
+    margin-bottom: 0.5cm;
+    height: 20vh;
+    color: #3F5049;
+
+    text-decoration: none;
+    position: relative;
+    /* 定位基准 */
+    cursor: pointer;
+    font-weight: normal;
+
+
+}
+
+.AboutMe .chinese {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.5cm;
+
+}
+
+.AboutMe .english {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 0.7cm;
+    font-style: italic;
+}
+
+.AboutMe::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    /* 初始位置在正中间 */
+    width: 0;
+    /* 初始宽度为0 */
+    height: 2px;
+    /* 下划线粗细 */
+    background: #609895;
+    /* 下划线颜色 */
+    transition: all 0.3s ease;
+    /* 动画效果 */
+    transform: translateX(-50%);
+    /* 向左回移50%宽度实现居中 */
+
+}
+
+.AboutMe:hover::after {
+    width: 20%;
+    left: 40%;
+    transform: translateX(0)
+}
+
+.AboutMe:hover {
+    transition: font-weight 0.1s ease;
+    font-weight: bolder;
+}
+
+.profile-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+
+    height: 10cm;
+    gap: 3cm;
+
+
+
+}
+
+.avatar {
+    flex: 0 0 150px;
+    position: relative;
+
+}
+
+.avatar::after {
+    content: 'NEW';
+    position: absolute;
+    opacity: 0;
+}
+
+.avatar:hover::after {
+    opacity: 1;
+    animation: Rotate 1s linear infinite;
+}
+
+.avatar img {
+    width: 10cm;
+    border-radius: 10%;
+    border: 4px solid #3F5049;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+    transition: transform 0.3s;
+}
+
+.avatar img:hover {
+    transform: scale(1.2);
+}
+
+/* 放大1.1倍 */
+
+
+.divider {
+    width: 2px;
+    height: 80%;
+    background: #3F5049;
+    margin: 0 20px;
+}
+
+.info {
+    width: 10cm;
+}
+
+.info .name {
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.2cm;
+    color: #3f5039;
+    position: relative
+}
+
+.info .detail {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 0.7cm;
+    color: #609896;
+}
+
+.detail a {
+    color: #609896;
+    text-decoration: none;
+}
+
+.detail a:hover {
+    color: #609896;
+    /* 浅绿色 */
+    text-decoration: underline;
+    /* 添加下划线 */
+}
+
+.tohsd {
+    position: relative
+}
+
+.tohsd::after {
+    opacity: 0;
+    content: '';
+    position: absolute;
+    display: block;
+    width: 70vh;
+    height: 50vh;
+    background-image: url('湖师大校门.png');
+    scale: 2;
+    background-size: cover;
+    z-index: -1;
+    transition: all 1s;
+    transform: translateX(10cm);
+    top: -5cm;
+    pointer-events: none
+}
+
+.tohsd:hover:after {
+    opacity: 0.4;
+
+    transition: all 1s;
+    transform: translateX(4cm);
+
+
+}
+
+.name::after {
+    content: 'Liu YuQing';
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease;
+    transform: translateY(-1cm)
+}
+
+.name:hover::after {
+    opacity: 1;
+}
+
+
+
+.workstitle {
+    text-align: center;
+    font-size: 0.7cm;
+    font-weight: 200;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #3f5039;
+
+
+}
+
+.workstitle h1 {
+    margin-top: 2cm;
+    margin-bottom: 0.2cm;
+}
+
+.workstitle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    /* 初始位置在正中间 */
+    width: 0;
+    /* 初始宽度为0 */
+    height: 2px;
+    /* 下划线粗细 */
+    background: #609895;
+    /* 下划线颜色 */
+    transition: all 0.3s ease;
+    /* 动画效果 */
+    transform: translateX(-50%);
+    /* 向左回移50%宽度实现居中 */
+
+}
+
+.workstitle:hover::after {
+    width: 15%;
+    left: 42.5%;
+    transform: translateX(0);
+
+}
+
+#work .workstitle::before {
+    content: '持续更新中！';
+    position: absolute;
+    font-size: 20px;
+    left: 55%;
+    rotate: 30deg;
+    opacity: 0;
+    transform: scaleX(0)
+}
+
+#work .workstitle:hover::before {
+    opacity: 1;
+    transition: all 0.5s;
+    transform: scaleX(1)
+}
+
+
+
+.workscontent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5cm;
+    text-align: center;
+    color: #3f5039;
+    margin-top: 1cm;
+
+}
+
+
+
+.work {
+    height: 360px;
+    width: 280px;
+
+}
+
+
+.subtitle {
+    text-align: center;
+    margin: 1cm;
+    font-family: monospace;
+    font-size: 1.5cm;
+    position: relative;
+    font-weight: 900;
+}
+
+.subtitle::after {
+    content: '';
+    width: 0;
+    position: absolute;
+    bottom: -0.4cm;
+
+
+}
+
+.subtitle:hover::after {
+    transition: all 0.5s;
+    background: #609895;
+    height: 3px;
+    width: 30vw;
+
+    transform: translateX(-50%);
+}
+
+#photo {
+    position: relative;
+}
+
+#photo ::before {
+    content: 'Photography';
+    position: absolute;
+    z-index: 2;
+    font-size: 1cm;
+    color: #609895;
+    transform: translateY(-1.5cm);
+
+}
+
+#media::before {
+    content: 'Media';
+    position: absolute;
+    z-index: 2;
+    font-size: 1cm;
+    color: #609895;
+    transform: translateY(-1.5cm);
+
+}
+
+.media-collection {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 0.7cm;
+    margin: 1.5cm;
+}
+
+.item-title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 0.9cm;
+    text-align: center;
+    color: #3f5039;
+    padding: 0.5cm;
+
+}
+
+.item {
+    padding: 0.5cm;
+
+
+}
+
+.item .acount-name {
+    font-family: 'FZSTK';
+    font-size: 0.9cm;
+    padding-top: 0.5cm;
+    padding-bottom: 0.5cm;
+
+}
+
+.item .platforms-acount {
+    margin-left: 0.7cm;
+}
+
+#自媒体 img {
+    width: 15vw;
+    height: auto;
+    border-radius: 50%;
+    border: 4px solid #3F5049;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+    transition: scale 0.5s;
+}
+
+#自媒体 img:hover {
+    scale: 1.2;
+    transition: all 0.5s;
+}
+
+#自媒体 .item {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 3cm;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.5cm;
+
+
+}
+
+
+.media-item {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    place-items: center;
+
+}
+
+#微电影 {
+    width: 60vw;
+
+    margin-top: 2cm;
+    justify-self: center;
+    /* 垂直居中 */
+
+}
+
+#微电影 .item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 1cm;
+
+
+}
+
+#微电影 .item-title {
+    text-align: center;
+}
+
+.movie-cell {
+    padding: 0.5cm;
+    border-bottom: 2px solid #000;
+
+}
+
+.summary {
+    padding: 0.5cm;
+    border-bottom: 2px solid #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.5cm;
+    font-weight: 500;
+
+}
+
+.work img {
+    border-radius: 10%;
+    border: 4px solid #3F5049;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+    transition: scale 0.5s;
+}
+
+.work img:hover {
+    transition: all 0.5s;
+    scale: 1.1;
+}
+
+.divider1 {
+    width: 2px;
+    height: 60vh;
+    background: #3F5049;
+    margin: 0 20px;
+}
+
+.awards-and-times {
+    margin-top: 1cm;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: center;
+    align-items: center;
+    gap: 1cm;
+    font-size: 0.7cm;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #3f5049;
+}
+
+.awards-and-times a {
+    color: #3f5049;
+    text-decoration: none;
+}
+
+.copyable-element {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 0.7cm;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    grid-template-columns: max-content max-content;
+    padding: 20px;
+    column-gap: 1cm;
+    color: #3f5049;
+    pointer-events: none;
+}
+
+.number {
+    position: relative;
+    pointer-events: auto;
+}
+
+.number::after {
+    content: '📄';
+    /* 伪元素内容 */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    cursor: pointer;
+    transform: translate(1cm, -0.3cm);
+    font-size: 20px;
+    pointer-events: auto;
+}
+
+
+/* 隐藏复选框 */
+.colection {
+    display: grid;
+    margin: 4cm;
+    gap: 0.5cm;
+}
+
+.colection-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.8cm;
+    color: #3f5039;
+}
+
+.colection-title::after {
+    content: '点击展开';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.4cm;
+    font-style: italic;
+}
+
+#人文照片 img {
+    scale: 0.3;
+}
+
+
+.toggle-container input[type="checkbox"] {
+    display: none;
+}
+
+/* 默认隐藏内容 */
+.toggle-container .content {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5%;
+    color: #3f5039;
+}
+
+/* 当复选框被选中时显示内容 */
+.toggle-container input[type="checkbox"]:checked~.content {
+    display: grid;
+    animation: fadeIn 0.5s linear;
+
+}
+
+/* 表格的 grid 布局 */
+.grid-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* 2 列，每列等宽 */
+    gap: 10px;
+    /* 单元格之间的间距 */
+    text-align: center;
+    margin: 1cm;
+}
+
+/* 单元格样式 */
+.cell {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10%;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* 图片样式 */
+.cell img {
+
+    width: 450px;
+    width: 300px;
+    border-radius: 5%;
+    cursor: pointer;
+    object-fit: cover;
+    /* 图片填充并裁剪 */
+    aspect-ratio: 3/2;
+}
+
+
+/* 遮罩层样式 */
+.overlay {
+    display: none;
+    /* 默认隐藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* 半透明黑色背景 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* 确保遮罩层在最上层 */
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+/* 大图样式 */
+.large-img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        /* 动画开始：完全透明 */
+    }
+
+    to {
+        opacity: 1;
+        /* 动画结束：完全不透明 */
+    }
+}
+
+@keyframes Rotate {
+    0% {
+        rotate: -45deg;
+    }
+
+    25% {
+        rotate: 0deg;
+    }
+
+    50% {
+        rotate: 45deg;
+    }
+
+    75% {
+        rotate: 0deg;
+    }
+
+    100% {
+        rotate: -45deg;
+    }
+}
+
+@font-face {
+    font-family: 'FZSTK';
+    /* 字体名称 */
+    src: url('yufandanqingsong.otf');
+    font-weight: normal;
+    /* 字体粗细 */
+    font-style: normal;
+    /* 字体样式 */
+}
